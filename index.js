@@ -125,7 +125,7 @@ app.post('/login', async (req, res) => {
                 }
             };
 
-            const token = jwt.sign(data, 'secret_ecom');
+            const token = jwt.sign(data, process.env.JWT_SECRET);
 
             res.json({
                 success: true,
@@ -255,7 +255,7 @@ const fetchuser = async (req, res, next) => {
     }
 
     try {
-        const data = jwt.verify(token, "secret_ecom");
+        const data = jwt.verify(token, process.env.JWT_SECRET);
         req.user = data.user;
         next();
     } catch {
