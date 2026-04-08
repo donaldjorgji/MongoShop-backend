@@ -10,7 +10,9 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://mongoshop-frontend-production-46a5.up.railway.app"
+  }));
 
 // lidhja me MongoDB
 mongoose.connect(process.env.MONGO_URL)
@@ -150,7 +152,7 @@ app.use('/images', express.static('upload/images'));
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
+        image_url: `https://mongoshop-backend-production.up.railway.app/images/${req.file.filename}`
     });
 });
 
