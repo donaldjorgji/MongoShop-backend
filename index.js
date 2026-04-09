@@ -10,9 +10,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors({
-    origin: "https://mongoshop-frontend-production-46a5.up.railway.app"
-  }));
+app.use(cors());
 
 // lidhja me MongoDB
 mongoose.connect(process.env.MONGO_URL)
